@@ -18,6 +18,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/subs', function(){
-      return view('subs');
+    
+    if (Gate::allows('subs-only', Auth::user())) {
+        // The current user can update the post...
+        return view('subs');
+    }
+    else
+    {
+        return "You are not a subscriber, subscribe now";
+    }
+    
 });
 Route::get('/home', 'HomeController@index')->name('home');
