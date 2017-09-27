@@ -17,4 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/subs', function(){
+      return view('subs');
+});
 Route::get('/home', 'HomeController@index')->name('home');
